@@ -5,9 +5,53 @@
 
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+  //SVG 
+  const svg = d3.select("#container")
+                .append("svg")
+                .attr("width", 600)
+                .attr("height", 400);
+  //rectangle
+  svg.append("rect")
+    .attr("x", 50)
+    .attr("y", 50)
+    .attr("width", 100)
+    .attr("height", 80)
+    .attr("fill", "blue")
+    .style("cursor", "pointer")
+    .on("click", function () {
+      const current = d3.select(this).attr("fill");
+      d3.select(this)
+        .attr("fill", current === "blue" ? "purple" : "blue");
+    });
+  //circle 
+  svg.append("circle")
+   .attr("cx", 250)
+   .attr("cy", 120)
+   .attr("r", 20)
+   .attr("fill", "red");
+  
+  //hover animation
+  svg.selectAll("circle")
+    .on("mouseover", function () {
+      d3.select(this)
+        .attr("fill", "orange")
+        .attr("r", 30);
+    })
+    .on("mouseout", function () {
+      d3.select(this)
+        .attr("fill", "red")
+        .attr("r", 20);
+    });
+  //line
+  svg.append("line")
+     .attr("x1", 50)
+     .attr("y1", 200)
+     .attr("x2", 300)
+     .attr("y2", 300)
+     .attr("stroke", "green")
+     .attr("stroke-width", 3);
+  //polygon
+  svg.append("polygon")
+     .attr("points", "400,50 450,150 350,150")
+     .attr("fill", "pink");
 </script>
