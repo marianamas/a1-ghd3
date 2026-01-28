@@ -1,57 +1,32 @@
-<!DOCTYPE html>
-<div id="container"></div>
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script type="module">
- 
-<script>
-  console.log(d3); // test if d3 is loaded
-  //SVG 
-  const svg = d3.select("#container")
-                .append("svg")
-                .attr("width", 600)
-                .attr("height", 400);
-  //rectangle
-  svg.append("rect")
-    .attr("x", 50)
-    .attr("y", 50)
-    .attr("width", 100)
-    .attr("height", 80)
-    .attr("fill", "blue")
-    .style("cursor", "pointer")
-    .on("click", function () {
-      const current = d3.select(this).attr("fill");
-      d3.select(this)
-        .attr("fill", current === "blue" ? "purple" : "blue");
-    });
-  //circle 
-  svg.append("circle")
-   .attr("cx", 250)
-   .attr("cy", 120)
-   .attr("r", 20)
-   .attr("fill", "red");
-  
-  //hover animation
-  svg.selectAll("circle")
-    .on("mouseover", function () {
-      d3.select(this)
-        .attr("fill", "orange")
-        .attr("r", 30);
-    })
-    .on("mouseout", function () {
-      d3.select(this)
-        .attr("fill", "red")
-        .attr("r", 20);
-    });
-  //line
-  svg.append("line")
-     .attr("x1", 50)
-     .attr("y1", 200)
-     .attr("x2", 300)
-     .attr("y2", 300)
-     .attr("stroke", "green")
-     .attr("stroke-width", 3);
-  //polygon
-  svg.append("polygon")
-     .attr("points", "400,50 450,150 350,150")
-     .attr("fill", "pink");
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>a1-ghd3</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+<body>
+
+  <div id="container"></div>
+
+  <script>
+    console.log("D3 loaded:", typeof d3 !== "undefined");
+
+    const svg = d3.select("#container")
+      .append("svg")
+      .attr("width", 400)
+      .attr("height", 300);
+
+    svg.append("circle")
+      .attr("cx", 200)
+      .attr("cy", 150)
+      .attr("r", 80);
+
+    svg.append("text")
+      .attr("x", 20)
+      .attr("y", 30)
+      .text("If you see this, GitHub Pages works ✅");
+  </script>
+
+</body>
+</html>
